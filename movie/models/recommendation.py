@@ -1,10 +1,9 @@
 from django.db import models
-from account.models import User
 from .content import Content
 
 
 class Recommendation(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='recommendations')
+    user = models.ForeignKey('account.User', on_delete=models.CASCADE, related_name='recommendations')
     content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name='recommended_to')
     score = models.FloatField(help_text="recommendation score based on algorithm")
     reason = models.CharField(max_length=255, blank=True, null=True)  # reason why a content is recommended

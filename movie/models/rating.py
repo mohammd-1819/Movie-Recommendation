@@ -1,11 +1,10 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-from account.models import User
 from .content import Content
 
 
 class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
+    user = models.ForeignKey('account.User', on_delete=models.CASCADE, related_name='ratings')
     content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name='ratings')
     rating = models.PositiveIntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(10)]
