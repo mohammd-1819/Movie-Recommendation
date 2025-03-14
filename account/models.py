@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from movie.models import Genre, ActorAndDirector
 
 
 class UserManager(BaseUserManager):
@@ -38,6 +39,12 @@ class User(AbstractBaseUser):
     username = models.CharField(max_length=255, default='user', unique=True, verbose_name='username')
     email = models.EmailField(verbose_name="email", default='-', max_length=255)
     fullname = models.CharField(max_length=255, verbose_name='fullname')
+    favorite_genres = models.ManyToManyField(Genre, related_name='favorite_genre_of_user', blank=True, null=True)
+    favorite_actors = models.ManyToManyField(ActorAndDirector, related_name='favorite_actor_of_user', blank=True,
+                                             null=True)
+    favorite_directors = models.ManyToManyField(ActorAndDirector, related_name='favorite_director_of_user', blank=True,
+                                                null=True)
+
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False, verbose_name='admin')
 
