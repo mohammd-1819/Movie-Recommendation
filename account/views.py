@@ -109,3 +109,25 @@ class UpdateProfileView(APIView):
             return Response({'message': 'Profile Updated', 'result': serializer.data}, status=status.HTTP_200_OK)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    @extend_schema(
+        tags=['User'],
+        summary='Logout user'
+    )
+    def post(self, request):
+        try:
+            refresh_token = request.data["refresh_token"]
+            token = RefreshToken(refresh_token)
+            token.blacklist()
+
+            return Response({
+                "message": "Successfully logged out."
+            })
+        except Exception as e:
+            return Response({
+                "error": "Invalid token or token not provided."
+            }, status=status.HTTP_400_BAD_REQUEST)

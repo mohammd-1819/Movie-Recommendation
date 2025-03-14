@@ -26,6 +26,7 @@ THIRD_PARTY_APPS = [
     'rest_framework',
     'drf_spectacular',
     'rest_framework_simplejwt',
+    'rest_framework_simplejwt.token_blacklist'
 ]
 
 LOCAL_APPS = [
@@ -124,6 +125,7 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'BLACKLIST_AFTER_ROTATION': True
 }
 
 # CACHES = {

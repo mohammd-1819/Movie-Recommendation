@@ -35,17 +35,9 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    ROLES = [
-        ('coach', 'Coach'),
-        ('athlete', 'Athlete'),
-    ]
-
     username = models.CharField(max_length=255, default='user', unique=True, verbose_name='username')
     email = models.EmailField(verbose_name="email", default='-', max_length=255)
     fullname = models.CharField(max_length=255, verbose_name='fullname')
-    role = models.CharField(max_length=10, choices=ROLES, default='athlete')
-    phone = models.CharField(max_length=11)
-    address = models.TextField(blank=True, null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False, verbose_name='admin')
 
@@ -59,7 +51,7 @@ class User(AbstractBaseUser):
         verbose_name_plural = 'users'
 
     def __str__(self):
-        return self.email
+        return self.username
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
