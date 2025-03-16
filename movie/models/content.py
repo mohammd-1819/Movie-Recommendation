@@ -18,7 +18,7 @@ class Content(models.Model):
     poster = models.ImageField(upload_to='img/posters', blank=True, null=True)
     genres = models.ManyToManyField(Genre, related_name='contents')
     director = models.ForeignKey(ActorAndDirector, on_delete=models.CASCADE, related_name='directed_contents')
-    actors = models.ManyToManyField(ActorAndDirector, related_name='acted_in_contents', through='Role')
+    actors = models.ManyToManyField(ActorAndDirector, related_name='acted_in_contents')
     duration = models.PositiveIntegerField(help_text="duration of the content")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
