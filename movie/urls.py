@@ -13,5 +13,15 @@ urlpatterns = [
     path('content/movie/all', content.MovieListView.as_view(), name='movie-list'),
     path('content/series/all', content.SeriesListView.as_view(), name='series-list'),
 
-    path('actor-director/all/', actor_and_director.ActorAndDirectorsListView.as_view(), name='actor-director-list')
+
+    path('actor-director/all/', actor_and_director.ActorAndDirectorsListView.as_view(), name='actor-director-list'),
+    path('actor/all/', actor_and_director.ActorListView.as_view(), name='actor-list'),
+    path('director/all/', actor_and_director.DirectorListView.as_view(), name='director-list'),
+    path('actor-director/<str:name>/detail/', actor_and_director.ActorOrDirectorDetailView.as_view(),
+         name='actor-director-detail'),
+    path('actor-director/add/', actor_and_director.AddActorOrDirectorView.as_view(), name='actor-director-add'),
+    path('actor-director/<str:name>/update', actor_and_director.UpdateActorOrDirectorView.as_view(),
+         name='actor-director-update'),
+    path('actor-director/<str:name>/remove', actor_and_director.RemoveActorOrDirectorView.as_view(),
+         name='actor-director-remove'),
 ]

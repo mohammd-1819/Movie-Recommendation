@@ -1,6 +1,6 @@
 from rest_framework import status
 from .models import User
-from .serializers import SignUpSerializer
+from .serializers import SignUpSerializer, LogoutSerializer
 from rest_framework.response import Response
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -113,6 +113,7 @@ class UpdateProfileView(APIView):
 
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
+    serializer_class = LogoutSerializer
 
     @extend_schema(
         tags=['User'],
