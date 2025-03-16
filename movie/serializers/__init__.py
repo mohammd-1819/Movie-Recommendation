@@ -6,7 +6,8 @@ from .recommendation import RecommendationSerializer
 from .role import RoleSerializer
 from .series import SeriesSerializer, SeasonSerializer, EpisodeSerializer
 from .watchlist import WatchlistSerializer
+from .create_content_ser import CreateContentSerializer
 
 __all__ = ['ActorAndDirectorSerializer', 'ContentSerializer', 'GenreSerializer', 'RatingSerializer',
            'RecommendationSerializer', 'RoleSerializer', 'SeriesSerializer', 'SeasonSerializer', 'EpisodeSerializer',
-           'WatchlistSerializer']
+           'WatchlistSerializer', 'CreateContentSerializer']
