@@ -6,7 +6,7 @@ from rest_framework.views import APIView
 from drf_spectacular.utils import extend_schema
 from ..serializers import ContentSerializer, CreateContentSerializer
 from ..utility.pagination import Pagination
-from rest_framework.permissions import IsAuthenticated, IsAdminUser, AllowAny
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
 @extend_schema(

@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import content
-from .views import actor_and_director
+from .views import content, genre, actor_and_director
+
 
 app_name = 'movie'
 
@@ -24,4 +24,9 @@ urlpatterns = [
          name='actor-director-update'),
     path('actor-director/<str:name>/remove', actor_and_director.RemoveActorOrDirectorView.as_view(),
          name='actor-director-remove'),
+
+    path('genre/list/', genre.GenreListView.as_view(), name='genre-list'),
+    path('genre/add/', genre.AddGenreView.as_view(), name='genre-add'),
+    path('genre/<str:genre>/all/', genre.MovieGenreListView.as_view(), name='genre-movie-list'),
+    path('genre/<str:genre>/series/all/', genre.SeriesGenreListView.as_view(), name='genre-series-list'),
 ]
