@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import content, genre, actor_and_director
+from .views import content, genre, actor_and_director, rating
 
 
 app_name = 'movie'
@@ -29,4 +29,9 @@ urlpatterns = [
     path('genre/add/', genre.AddGenreView.as_view(), name='genre-add'),
     path('genre/<str:genre>/all/', genre.MovieGenreListView.as_view(), name='genre-movie-list'),
     path('genre/<str:genre>/series/all/', genre.SeriesGenreListView.as_view(), name='genre-series-list'),
+
+
+    path('rating/<str:content_title>/all', rating.ContentRatingListView.as_view(), name='rating-content-list'),
+    path('rating/<str:content_title>/add/', rating.AddRatingView.as_view(), name='rating-add'),
+    path('rating/<int:id>/remove/', rating.RemoveRatingView.as_view(), name='rating-remove'),
 ]
