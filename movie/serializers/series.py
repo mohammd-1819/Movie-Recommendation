@@ -1,9 +1,12 @@
 from rest_framework import serializers
 from movie.models import Series, Season, Episode
+from ..serializers import ContentSerializer
 from django.utils.timezone import now
 
 
 class SeriesSerializer(serializers.ModelSerializer):
+    content = ContentSerializer()
+
     class Meta:
         model = Series
         exclude = ('id',)
@@ -46,6 +49,8 @@ class SeasonSerializer(serializers.ModelSerializer):
 
 
 class EpisodeSerializer(serializers.ModelSerializer):
+    season = serializers.StringRelatedField()
+
     class Meta:
         model = Episode
         exclude = ('id',)

@@ -19,7 +19,7 @@ urlpatterns = [
 
     # app endpoints
     path('api/v1/account/', include('account.urls')),
-    path('api/v1/movie/', include('movie.urls')),
+    path('api/v1/content/', include('movie.urls')),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
