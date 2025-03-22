@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import content, genre, actor_and_director, rating, series, watchlist
+from .views import content, genre, actor_and_director, rating, series, watchlist, recommendation
 
 app_name = 'movie'
 
@@ -40,4 +40,6 @@ urlpatterns = [
     path('watchlist/user/', watchlist.UserWatchlistView.as_view(), name='watchlist-user'),
     path('watchlist/add/', watchlist.AddWatchlistView.as_view(), name='watchlist-add'),
     path('watchlist/<int:watchlist_id>/remove/', watchlist.RemoveWatchlistView.as_view(), name='watchlist-remove'),
+
+    path('recommend/', recommendation.HybridRecommendationView.as_view(), name='recommend')
 ]
